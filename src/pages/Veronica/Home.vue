@@ -39,7 +39,7 @@
       <!-- set设置头像 -->
       <set></set>
 
-      <router-link to="/TreasureBag" class="treasureBag"></router-link>
+      <!-- <router-link to="/TreasureBag" class="treasureBag"></router-link> -->
 
       <!-- 天气模块 -->
       <!-- <weather></weather> -->
@@ -229,7 +229,7 @@ export default {
 }
 
 
-.treasureBag{
+/* .treasureBag{
     width: 50px;
     height: 50px;
     background-color: #333;
@@ -240,7 +240,7 @@ export default {
     box-shadow: 2px 2px 10px -5px rgb(0, 0, 0);
     cursor: pointer;
     z-index: 0;
-}
+} */
 
 
 

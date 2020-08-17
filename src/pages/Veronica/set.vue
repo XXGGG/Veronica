@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <router-link to="/AboutMe" class="aboutME" target="_blank">关于我</router-link>
+                <!-- <router-link to="/AboutMe" class="aboutME" target="_blank">关于我</router-link> -->
 
             </div>
         </transition>
@@ -256,7 +256,7 @@ export default {
     color: #000;
 }
 
-.aboutME{
+/* .aboutME{
     display: block;
     width: 360px;
     height: 58px;
@@ -270,8 +270,7 @@ export default {
     cursor: pointer;
     box-shadow: 2px 2px 10px -3px #111;
     border: 1px solid #222;
-    text-decoration: none;
-    
-}
+    text-decoration: none; 
+} */
 
 </style>
