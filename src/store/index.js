@@ -11,7 +11,9 @@ const store = new Vuex.Store({
 
         search_engine: 'baidu' || JSON.parse(localStorage.getItem('user-defined')).search_engine,
 
-        shortcut_area: true || JSON.parse(localStorage.getItem('user-defined')).shortcut_area,
+        shortcut_area: 'open' || JSON.parse(localStorage.getItem('user-defined')).shortcut_area,
+
+        shortcut_name: 'open' || JSON.parse(localStorage.getItem('user-defined')).shortcut_name,
 
     },
     mutations:{
@@ -23,6 +25,9 @@ const store = new Vuex.Store({
         },
         C_shortcut_area(state,boole){
             state.shortcut_area = boole
+        },
+        C_shortcut_name(state,boole){
+            state.shortcut_name = boole
         },
     }
 })

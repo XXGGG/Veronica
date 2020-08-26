@@ -8,24 +8,10 @@
 export default {
   name: 'App',
   created(){
-    this.inspect();
+   
   },
    methods:{
-    // 当打开网页要先进行检查
-    inspect(){
-      if(!localStorage.getItem('user-defined')){
-        this.init_user_data();
-      }
-    },
-    // 初始化用户数据
-    init_user_data(){
-      let data ={
-            'search_area':'search_area_1',
-            'search_engine':'baidu',
-            'shortcut_area':false,
-        }
-        localStorage.setItem('user-defined',JSON.stringify(data))
-    },
+    
    }
 }
 </script>
