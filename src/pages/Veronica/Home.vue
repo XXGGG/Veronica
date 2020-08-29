@@ -27,13 +27,13 @@
       <!-- 快捷网址 -->
       <transition name = "short_g">
         <div class="shortcut_area" v-if="shortcut_switch == 'open'">
-            <a :href="item.link" class="s_item" v-for="item in shortcut_list" :key="item.name">
+            <a :href="item.link" class="s_item" v-for="item in shortcut_list" :key="item.name" target="shortcut_target">
               <div class="s_square"><img :src="item.img" alt="图片"></div>
               <div class="s_text" v-if="shortcut_name == 'open'">{{item.name}}</div>
             </a>
         </div>
       </transition>
-
+      
       
 
       <!-- set设置头像 -->
@@ -84,6 +84,17 @@
                                         @change="shortcut_name_btn()">
                             </el-switch>
                         </div>
+                        <div class="set_item">
+                            <span>在新页面打开</span>
+                            <el-switch  class="switch_item"
+                                        v-model="shortcut_target"      
+                                        active-color="#13ce66"
+                                        inactive-color="#ff4949"
+                                        active-value="_blank"
+                                        inactive-value="_self"
+                                        @change="shortcut_target_btn()">
+                            </el-switch>
+                        </div>
                     </div>
 
                     <a class="aboutME" href="https://xxggg.gitee.io">关于我</a>
@@ -126,7 +137,8 @@ export default {
         { img:require('@/assets/shortcut_img/github.jpg'),link:'https://github.com/',name:'GitHub'},
         { img:require('@/assets/shortcut_img/mayun.jpg'),link:'https://gitee.com/',name:'码云'},
         { img:require('@/assets/shortcut_img/mgtv.jpg'),link:'https://www.mgtv.com/',name:'芒果TV'},
-      ]
+      ],
+      shortcut_target:this.$store.state.shortcut_target
     }
   },
   mounted(){
@@ -141,6 +153,7 @@ export default {
         this.$store.commit('C_search_engine',this.userData.search_engine)
         this.$store.commit('C_shortcut_area',this.userData.shortcut_area)
         this.$store.commit('C_shortcut_name',this.userData.shortcut_name)
+        this.$store.commit('C_shortcut_target',this.userData.shortcut_target)
       }else{
         // 初始化用户数据
           let data ={
@@ -148,6 +161,7 @@ export default {
               'search_engine':'baidu',
               'shortcut_area':'open',
               'shortcut_name':'open',
+              'shortcut_target':'_blank',
           }
           localStorage.setItem('user-defined',JSON.stringify(data))
           this.userData = JSON.parse(localStorage.getItem('user-defined'))
@@ -170,31 +184,37 @@ export default {
     //改变搜索栏处的样式
     change_search_style(style){
         this.$store.commit('C_search_area',style)
-
         this.userData.search_area = style 
-        localStorage.setItem('user-defined',JSON.stringify(this.userData))
+        this.updateUserData()
     },
     // 改变搜索引擎
     C_engine(engine){
         this.$store.commit('C_search_engine',engine)
         this.userData.search_engine = engine 
-        localStorage.setItem('user-defined',JSON.stringify(this.userData))
+        this.updateUserData()
     },
     //快捷键
     shortcut_switch_btn(data){
         this.$store.commit('C_shortcut_area',this.shortcut_switch)
-
         this.userData.shortcut_area = this.shortcut_switch 
-        console.log(this.userData)
-        localStorage.setItem('user-defined',JSON.stringify(this.userData))
+        this.updateUserData()
     },
     //快捷图标名字
     shortcut_name_btn(data){
         this.$store.commit('C_shortcut_name',this.shortcut_name)
-
         this.userData.shortcut_name = this.shortcut_name 
-        localStorage.setItem('user-defined',JSON.stringify(this.userData))
+        this.updateUserData()
     },
+    //快捷 - 在新页面打开
+    shortcut_target_btn(data){
+      this.$store.commit('C_shortcut_target',this.shortcut_target)
+      this.userData.shortcut_target = this.shortcut_target 
+      this.updateUserData()
+    },
+    //更新用户数据
+    updateUserData(){
+      localStorage.setItem('user-defined',JSON.stringify(this.userData))
+    }
   }
 }
 </script>
@@ -383,10 +403,17 @@ export default {
 }
 .s_item{
   width: 80px;
-  overflow: hidden;
+  /* overflow: hidden; */
   border-radius: 16px;
   margin: 20px;
   float: left;
+}
+.s_item:hover{
+  transform: scale(1.2);
+}
+.s_item:hover .s_square{
+  border: 1px solid #27eff6;
+  box-shadow: 1px 1px 20px 0px #27eff6;
 }
 .s_square{
   width: 80px;

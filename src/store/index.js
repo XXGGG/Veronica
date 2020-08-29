@@ -2,19 +2,24 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
-
+function xxg(key){
+   return JSON.parse(localStorage.getItem(key))
+}
 
 
 const store = new Vuex.Store({
     state:{
-        search_area: 'search_area_1' || JSON.parse(localStorage.getItem('user-defined')).search_area,
+        search_area: xxg('user-defined') ? xxg('user-defined').search_area : 'search_area_1' ,
 
-        search_engine: 'baidu' || JSON.parse(localStorage.getItem('user-defined')).search_engine,
+        search_engine: xxg('user-defined') ? xxg('user-defined').search_engine : 'baidu' ,
 
-        shortcut_area: 'open' || JSON.parse(localStorage.getItem('user-defined')).shortcut_area,
+        shortcut_area: xxg('user-defined') ? xxg('user-defined').shortcut_area : 'open' ,
 
-        shortcut_name: 'open' || JSON.parse(localStorage.getItem('user-defined')).shortcut_name,
+        shortcut_name: xxg('user-defined') ? xxg('user-defined').shortcut_name : 'open' ,
 
+        shortcut_target:xxg('user-defined') ? xxg('user-defined').shortcut_target : '_blank' ,
+        // shortcut_target:JSON.parse(localStorage.getItem('user-defined')) ? JSON.parse(localStorage.getItem('user-defined')).shortcut_target : '_blank' ,
+        
     },
     mutations:{
         C_search_area(state,style){
@@ -28,6 +33,9 @@ const store = new Vuex.Store({
         },
         C_shortcut_name(state,boole){
             state.shortcut_name = boole
+        },
+        C_shortcut_target(state,boole){
+            state.shortcut_target = boole
         },
     }
 })
