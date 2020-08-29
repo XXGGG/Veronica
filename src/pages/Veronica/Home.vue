@@ -27,7 +27,7 @@
       <!-- 快捷网址 -->
       <transition name = "short_g">
         <div class="shortcut_area" v-if="shortcut_switch == 'open'">
-            <a :href="item.link" class="s_item" v-for="item in shortcut_list" :key="item.name" target="shortcut_target">
+            <a :href="item.link" class="s_item" v-for="item in shortcut_list" :key="item.name" :target="shortcut_target">
               <div class="s_square"><img :src="item.img" alt="图片"></div>
               <div class="s_text" v-if="shortcut_name == 'open'">{{item.name}}</div>
             </a>
@@ -97,7 +97,8 @@
                         </div>
                     </div>
 
-                    <a class="aboutME" href="https://xxggg.gitee.io">关于我</a>
+                    <a class="aboutME" href="https://xxggg.gitee.io" target="_blank">AUTHOR</a>
+                    <a class="aboutME" href="https://xxggg.gitee.io/demo" target="_blank">OTHER-DEMO</a>
 
                 </div>
             </transition>
@@ -309,13 +310,17 @@ export default {
 }
 /* 搜索模块——2 */
 .search_area_2{
-  width: 960px;
+  /* width: 960px; */
+  width: 98vw;
   height: 50px;
   margin: auto;
   padding: 20px 0;
   overflow: hidden;
   transition: all .6s;
-  position: relative;
+  position: absolute;
+  top:1vw;
+  border-radius: 10px;
+  /* background-color: #36363686; */
 }
 .search_area_2 .search_logo{
   width: 260px;
@@ -369,7 +374,9 @@ export default {
   user-select: none;
   transition: all .6s;
 }
-
+.search:hover{
+  box-shadow: 0px 0px 6px 0px rgb(88, 211, 233);
+}
 
 /* 响应式搜索框 */
 /* PC */
@@ -421,6 +428,7 @@ export default {
   overflow: hidden;
   border-radius: 16px;
   background-color: cornflowerblue;
+  border: 1px solid #000000;
 }
 .s_square img{
   width: 100%;
@@ -463,13 +471,15 @@ export default {
     background-color: #333;
     border-radius: 10px;
     position: fixed;
-    right: 20px;
-    top: 20px;
+    right: calc(1vw + 20px);
+    top:calc(1vw + 20px);
     box-shadow: 2px 2px 10px -5px rgb(0, 0, 0);
     cursor: pointer;
     z-index: 10;
 }
-
+.set:hover{
+  box-shadow: 0px 0px 10px 0px rgba(69, 210, 235, 0.767);
+}
 .mask{
     position: fixed;
     top:0;
@@ -608,9 +618,9 @@ export default {
 
 .aboutME{
     display: block;
-    width: 360px;
+    width: 160px;
     height: 58px;
-    margin: auto;
+    margin: 20px;
     border-radius: 5px;
     background-color: #222;
     color: azure;
@@ -619,7 +629,8 @@ export default {
     line-height: 58px;
     cursor: pointer;
     box-shadow: 2px 2px 10px -3px #111;
-    border: 1px solid #222;
     text-decoration: none; 
+
+    float: left;
 }
 </style>
