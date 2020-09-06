@@ -98,7 +98,7 @@
                     </div>
 
                     <a class="aboutME" href="https://xxggg.gitee.io" target="_blank">AUTHOR</a>
-                    <a class="aboutME" href="https://xxggg.gitee.io/demo" target="_blank">OTHER-DEMO</a>
+                    <a class="aboutME" href="https://xxggg.gitee.io/vue2-demo" target="_blank">OTHER-DEMO</a>
 
                 </div>
             </transition>
@@ -144,8 +144,14 @@ export default {
   },
   mounted(){
     this.inspect();
+    this.test();
   },
   methods:{
+    test(){
+      console.log(this.$data)
+      console.log(this)
+      console.log(this.$data)
+    },
      // 当打开网页要先进行检查 拿到用户数据
     inspect(){
       if(localStorage.getItem('user-defined')){
