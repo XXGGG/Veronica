@@ -50,10 +50,10 @@
                     <div class="set_area">
                         <div class="select_box">
                             <i @click="change_search_style('search_area_1')">
-                                <div class="waw" :class="$store.state.search_area == 'search_area_1'  ? 'now' : ''">waw</div>
+                                <div class="select_item" :class="$store.state.search_area == 'search_area_1'  ? 'now' : ''">waw</div>
                             </i>
                             <i @click="change_search_style('search_area_2')">
-                                <div class="o_o" :class="$store.state.search_area == 'search_area_2'  ? 'now' : ''">o_o</div>
+                                <div class="select_item" :class="$store.state.search_area == 'search_area_2'  ? 'now' : ''">o_o</div>
                             </i>
                         </div>
 
@@ -95,10 +95,17 @@
                                         @change="shortcut_target_btn()">
                             </el-switch>
                         </div>
+
+
+                        <a class="aboutME" href="https://xxggg.gitee.io" target="_blank">AUTHOR</a>
+                        <a class="aboutME" href="https://xxggg.gitee.io/vue2-demo" target="_blank">OTHER-DEMO</a>
+                    
                     </div>
 
-                    <a class="aboutME" href="https://xxggg.gitee.io" target="_blank">AUTHOR</a>
-                    <a class="aboutME" href="https://xxggg.gitee.io/vue2-demo" target="_blank">OTHER-DEMO</a>
+                    <div class="chassis">
+                      <div class="clear" @click="close_set()">❌</div>
+                    </div>
+                    
 
                 </div>
             </transition>
@@ -233,7 +240,7 @@ export default {
 }
 .background{
   width: 100%;
-  min-width: 400px;
+  /* min-width: 400px; */
   min-height: 100vh;
   background-color: #222;
   font-family: Comic Sans MS;
@@ -254,19 +261,20 @@ export default {
 
 /* 搜索模块——1 */
 .search_area_1{
-  width: 960px;
+  max-width: 960px;
+  width: 100%;
   height: 150px;
   margin:0px auto;
   overflow: hidden;
-  transition: all .3s;
+  transition: all .2s;
   position: relative;
 }
 .search_area_1 .search_logo{
+  display: none;
   width: 260px;
   text-align: center;
   height: 60px;
   line-height: 60px;
-  left: calc(480px - 130px);
   margin:0 auto;
   overflow: hidden;
   user-select: none;
@@ -298,8 +306,7 @@ export default {
 }
 .search_area_1 .search{
   display: block;
-  max-width: 800px;
-  min-width: 60%;
+  width: 80%;
   height: 50px;
   background-color: rgba(78, 78, 78, 0.404);
   margin:20px auto 20px;
@@ -316,27 +323,27 @@ export default {
 }
 /* 搜索模块——2 */
 .search_area_2{
-  /* width: 960px; */
   width: 98vw;
   height: 50px;
   margin: auto;
   padding: 20px 0;
   overflow: hidden;
-  transition: all .6s;
+  transition: all .2s;
   position: absolute;
   top:1vw;
   border-radius: 10px;
   /* background-color: #36363686; */
 }
 .search_area_2 .search_logo{
-  width: 260px;
+  display: none;
+  width: 50px;
   height: 50px;
   user-select: none;
   overflow: hidden;
   position: absolute;
   top:20px;
   left: 20px;
-  transition: all .4s;
+  transition: all .1s;
 }
 .search_area_2 .logo_img{
   width: 50px;
@@ -354,18 +361,18 @@ export default {
   font-size: 0px;
   color: #F5F5F5;
   text-shadow: 1px 1px 14px  rgb(90, 90, 90);
-  transition: all .3s;
+  transition: all .2s;
 }
 
 .search_area_2 .search_box{
   width: 100%;
   position: absolute;
   top:20px;
-  transition: all .6s;
+  transition: all .2s;
 }
 .search_area_2 .search{
   display: block;
-  width: 600px;
+  width: 80vw;
   height: 50px;
   background-color: rgba(78, 78, 78, 0.404);
   margin:0px auto 0;
@@ -384,29 +391,21 @@ export default {
   box-shadow: 0px 0px 6px 0px rgb(88, 211, 233);
 }
 
-/* 响应式搜索框 */
-/* PC */
-@media only screen and (min-width: 960px) {
-    .search {width:800px;}
-}
-/* 横放平板 */
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-    .search {width:600px;}
-}
-/* 横放手机/竖放平板 */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-    .search {width:70%;}
-}
+
 
 /* 快捷网址 */
 .shortcut_area{
     max-width: 1200px;
     width: 90%;
     min-height: 100px;
+    /* max-height: calc(100vh - 180px); */
+    max-height: calc(100vh - 400px);
     margin: 10px auto 0;
     border-radius: 6px;
     /* background-color: #343434; */
+    background-color: #34343470;
     transition: all .2s;
+    overflow: auto;
 
     /* flex布局 */
     display: flex;
@@ -415,10 +414,13 @@ export default {
     justify-content: space-evenly;
 }
 .s_item{
-  width: 80px;
-  /* overflow: hidden; */
-  border-radius: 16px;
-  margin: 20px;
+  max-width: 80px;
+  width: 10vw;
+  min-width: 50px;
+
+  /* background-color: cornflowerblue; */
+  border-radius: 4px;
+  margin: 14px;
   float: left;
 }
 .s_item:hover{
@@ -429,11 +431,16 @@ export default {
   box-shadow: 1px 1px 20px 0px #27eff6;
 }
 .s_square{
-  width: 80px;
-  height: 80px;
+  max-width: 80px;
+  width: 10vw;
+  min-width: 50px;
+
+  max-height: 80px;
+  height: 10vw;
+  min-height: 50px;
   overflow: hidden;
-  border-radius: 16px;
-  background-color: cornflowerblue;
+  border-radius: 6px;
+  /* background-color: cornflowerblue; */
   border: 1px solid #000000;
 }
 .s_square img{
@@ -441,10 +448,12 @@ export default {
   height: 100%;
 }
 .s_text{
-  width: 80px;
+  width: 100%;
   height: 40px;
   line-height: 40px;
-  font-size: 16px;
+  font-size: 14px;
+  /* font-size: 1vw; */
+  /* background-color: brown; */
   text-align: center;
 
   overflow: hidden;
@@ -452,8 +461,6 @@ export default {
   text-overflow: ellipsis;
 }
 
-</style>
-<style  scoped>
 
 /* 渐渐消失的动画 */
 .short_g-enter-active {
@@ -472,13 +479,15 @@ export default {
 
 
 .set{
-    width: 50px;
+    width: 90%;
     height: 50px;
     background-color: #333;
     border-radius: 10px;
     position: fixed;
-    right: calc(1vw + 20px);
-    top:calc(1vw + 20px);
+    /* left: 5%; */
+    right: 5%;
+    
+    bottom: 10px;
     box-shadow: 2px 2px 10px -5px rgb(0, 0, 0);
     cursor: pointer;
     z-index: 10;
@@ -504,30 +513,12 @@ export default {
     background-color: #333;
     position: fixed;
     right: 20px;
-    top: 20px;
-    bottom: 20px;
+    top:10px;
+    bottom: 10px;
     box-shadow: 5px 5px 20px -5px #000;
     z-index: 11;
-}
-.close_menu{
-    width: 100%;
-    height: 44px;
+
     overflow: hidden;
-    background-color: rgb(37, 37, 37);
-}
-.close{
-    display: block;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
-    text-align: center;
-    margin: 10px;
-    font-size: 10px;
-    background-color: rgb(251, 76, 76);
-    border-radius: 50%;
-    cursor: pointer;
-    float:right;
-    box-shadow: 2px 2px 10px -5px rgb(2, 2, 2);
 }
 
 .set_g-enter-active, .set_g-leave-active {
@@ -540,36 +531,21 @@ export default {
 
 
 .set_area{
-    width: 400px;
+    /* width: 400px; */
+    width: 100%;
+    height: 90%;
     box-sizing: border-box;
     padding: 20px;
+    /* background-color: brown; */
     
-}
+    overflow: auto;
 
-
-.waw{
-    color: azure;
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
-    float: left;
-    font-size: 30px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: rgb(41, 41, 41);
-    cursor: pointer;
-}
-.o_o{
-    color: azure;
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
-    float: right;
-    font-size: 30px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: rgb(41, 41, 41);
-    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    align-content: flex-start;
 }
 
 .set_item{
@@ -592,16 +568,16 @@ export default {
 .select_box{
     color: azure;
     user-select: none;
-    width: 360px;
+    width: 98%;
     min-height:30px ;
     margin: 10px auto;
     border-radius: 5px;
     /* background-color: #111; */
 
-    display: -webkit-flex;
     display: flex;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+    justify-content: space-evenly;
 }
 .select_item{
     width: 98px;
@@ -624,10 +600,10 @@ export default {
 
 .aboutME{
     display: block;
-    width: 160px;
+    width: 150px;
     height: 58px;
-    margin: 20px;
     border-radius: 5px;
+    margin: 10px 0;
     background-color: #222;
     color: azure;
     text-align: center;
@@ -638,5 +614,68 @@ export default {
     text-decoration: none; 
 
     float: left;
+    user-select: none;
 }
+.chassis{
+  width: 100%;
+  height: 10%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clear{
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+  background-color: rgba(37, 37, 37, 0.637);
+  margin: auto;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  user-select: none;
+} 
+</style>
+
+<style scoped>
+/* 前面去写移动端的，这里写web端 */
+@media screen and (min-width:720px){
+  .search {width:1000px;}
+  .search_area_1 .search_logo{
+    display: block;
+  }
+  .search_area_2 .search_logo{
+    display: block;
+  }
+  .search_area_2 .search{
+    width: 500px;
+  }
+  .s_item{
+    width: 80px;
+    border-radius: 16px;
+  }
+  .s_square{
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+  }
+  .set{
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    border-radius: 10px;
+    position: fixed;
+    right: calc(1vw + 20px);
+    top:calc(1vw + 20px);
+    box-shadow: 2px 2px 10px -5px rgb(0, 0, 0);
+    cursor: pointer;
+    z-index: 10;
+  }
+}
+/* 响应式搜索框 */
+
 </style>
