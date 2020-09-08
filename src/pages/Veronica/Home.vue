@@ -49,12 +49,9 @@
 
                     <div class="set_area">
                         <div class="select_box">
-                            <i @click="change_search_style('search_area_1')">
-                                <div class="select_item" :class="$store.state.search_area == 'search_area_1'  ? 'now' : ''">waw</div>
-                            </i>
-                            <i @click="change_search_style('search_area_2')">
-                                <div class="select_item" :class="$store.state.search_area == 'search_area_2'  ? 'now' : ''">o_o</div>
-                            </i>
+                            <div class="select_item" :class="$store.state.search_area == 'search_area_1'  ? 'now' : ''" @click="change_search_style('search_area_1')">waw</div>
+
+                            <div class="select_item" :class="$store.state.search_area == 'search_area_2'  ? 'now' : ''" @click="change_search_style('search_area_2')">o_o</div>
                         </div>
 
                         <div class="select_box">
@@ -372,8 +369,8 @@ export default {
 }
 .search_area_2 .search{
   display: block;
-  width: 80vw;
-  height: 50px;
+  width: 70vw;
+  height: 40px;
   background-color: rgba(78, 78, 78, 0.404);
   margin:0px auto 0;
   border-radius: 5px;
@@ -388,7 +385,7 @@ export default {
   transition: all .6s;
 }
 .search:hover{
-  box-shadow: 0px 0px 6px 0px rgb(88, 211, 233);
+  box-shadow: 0px 0px 2px 0px rgb(88, 211, 233);
 }
 
 
@@ -402,8 +399,7 @@ export default {
     max-height: calc(100vh - 400px);
     margin: 10px auto 0;
     border-radius: 6px;
-    /* background-color: #343434; */
-    background-color: #34343470;
+    /* background-color: #34343470; */
     transition: all .2s;
     overflow: auto;
 
@@ -507,14 +503,13 @@ export default {
 }
 
 .set_box{
-    width: 90%;
-    max-width: 400px;
-    border-radius: 10px;
+    width: 100%;
+    /* max-width: 400px; */
     background-color: #333;
     position: fixed;
-    right: 20px;
-    top:10px;
-    bottom: 10px;
+    right: 0px;
+    top:0px;
+    bottom: 0px;
     box-shadow: 5px 5px 20px -5px #000;
     z-index: 11;
 
@@ -535,7 +530,7 @@ export default {
     width: 100%;
     height: 90%;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 10px;
     /* background-color: brown; */
     
     overflow: auto;
@@ -552,13 +547,15 @@ export default {
     color: azure;
     user-select: none;
     margin-bottom: 10px;
-    width: 320px;
+    width: 98%;
     min-height:40px ;
     line-height: 40px;
     margin: 10px auto;
     padding: 10px 20px;
     border-radius: 5px;
     background-color: #222;
+
+    box-sizing: border-box;
 }
 .switch_item{
     float: right;
@@ -577,10 +574,12 @@ export default {
     display: flex;
     flex-wrap: wrap;
     /* justify-content: space-around; */
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 .select_item{
-    width: 98px;
+    /* width: 98px; */
+    width: 30%;
+    min-width: 40px;
     height: 58px;
     border-radius: 5px;
     background-color: #222;
@@ -600,7 +599,7 @@ export default {
 
 .aboutME{
     display: block;
-    width: 150px;
+    width: 98%;
     height: 58px;
     border-radius: 5px;
     margin: 10px 0;
@@ -625,13 +624,13 @@ export default {
   align-items: center;
 }
 .clear{
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
 
   border-radius: 50%;
   background-color: rgba(37, 37, 37, 0.637);
   margin: auto;
-  font-size: 24px;
+  font-size: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -653,6 +652,7 @@ export default {
   }
   .search_area_2 .search{
     width: 500px;
+    height: 50px;
   }
   .s_item{
     width: 80px;
@@ -675,6 +675,18 @@ export default {
     cursor: pointer;
     z-index: 10;
   }
+  .set_box{
+    width: 100%;
+    max-width: 400px;
+    background-color: #333;
+    position: fixed;
+    right: 20px;
+    top:20px;
+    bottom: 20px;
+    border-radius: 10px;
+
+    overflow: hidden;
+}
 }
 /* 响应式搜索框 */
 
