@@ -398,8 +398,9 @@ export default {
     /* max-height: calc(100vh - 180px); */
     max-height: calc(100vh - 400px);
     margin: 10px auto 0;
-    border-radius: 6px;
+    border-radius: 10px;
     /* background-color: #34343470; */
+    padding: 10px;
     transition: all .2s;
     overflow: auto;
 
@@ -415,16 +416,17 @@ export default {
   min-width: 50px;
 
   /* background-color: cornflowerblue; */
-  border-radius: 4px;
+  border-radius: 20px;
   margin: 14px;
   float: left;
 }
 .s_item:hover{
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 .s_item:hover .s_square{
-  border: 1px solid #27eff6;
-  box-shadow: 1px 1px 20px 0px #27eff6;
+  /* border: 1px solid #27eff6; */
+  /* box-shadow: 0px 0px 10px -2px #27eff6; */
+  box-shadow: 0px 0px 14px -3px #0bf7ff;
 }
 .s_square{
   max-width: 80px;
@@ -435,9 +437,9 @@ export default {
   height: 10vw;
   min-height: 50px;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 14px;
   /* background-color: cornflowerblue; */
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
 }
 .s_square img{
   width: 100%;
