@@ -1,5 +1,5 @@
 <template>
-  <div class="background">
+  <div class="background" :style="`background:url(${BgPicture})`">
 
       <!-- search 模块 -->
         <!-- 标题跟logo -->
@@ -92,6 +92,17 @@
                                         @change="shortcut_target_btn()">
                             </el-switch>
                         </div>
+                        <div class="set_item">
+                            <span>必应每日一图</span>
+                            <el-switch  class="switch_item"
+                                        v-model="bg_picture"      
+                                        active-color="#13ce66"
+                                        inactive-color="#ff4949"
+                                        active-value="open"
+                                        inactive-value="close"
+                                        @change="bg_picture_btn()">
+                            </el-switch>
+                        </div>
 
 
                         <a class="aboutME" href="https://xxggg.gitee.io" target="_blank">AUTHOR</a>
@@ -143,18 +154,28 @@ export default {
         { img:require('@/assets/shortcut_img/mayun.jpg'),link:'https://gitee.com/',name:'码云'},
         { img:require('@/assets/shortcut_img/mgtv.jpg'),link:'https://www.mgtv.com/',name:'芒果TV'},
       ],
-      shortcut_target:this.$store.state.shortcut_target
+      shortcut_target:this.$store.state.shortcut_target,
+      bg_picture:this.$store.state.bg_picture,
+
+      BgPicture:'' //背景图片
     }
   },
   mounted(){
-    this.inspect();
-    this.test();
+    this.inspect(); //初始化用户数据
+    this.test(); //测试用的 ，目前没有测试
+    this.load_bg(); //加载背景图片
   },
   methods:{
-    test(){
-      console.log(this.$data)
-      console.log(this)
-      console.log(this.$data)
+    // 加载背景
+    load_bg(){
+      if(this.bg_picture == 'open'){
+        this.axios.get('https://api.xygeng.cn/Bing/url/')
+        .then(res => {
+          this.BgPicture = res.data.data
+        })
+      }else{
+        this.BgPicture = ''
+      }
     },
      // 当打开网页要先进行检查 拿到用户数据
     inspect(){
@@ -222,6 +243,13 @@ export default {
       this.userData.shortcut_target = this.shortcut_target 
       this.updateUserData()
     },
+    //是否打开背景图片
+    bg_picture_btn(data){
+      this.load_bg()
+      this.$store.commit('C_bg_picture',this.bg_picture)
+      this.userData.bg_picture = this.bg_picture 
+      this.updateUserData()
+    },
     //更新用户数据
     updateUserData(){
       localStorage.setItem('user-defined',JSON.stringify(this.userData))
@@ -240,6 +268,8 @@ export default {
   /* min-width: 400px; */
   min-height: 100vh;
   background-color: #222;
+  background-size: cover;
+
   font-family: Comic Sans MS;
 
   display: flex;
@@ -305,10 +335,10 @@ export default {
   display: block;
   width: 80%;
   height: 50px;
-  background-color: rgba(78, 78, 78, 0.404);
+  background-color: rgba(24, 24, 24, 0.8);
   margin:20px auto 20px;
   border-radius: 5px;
-  box-shadow: 2px 2px 10px -1px #111;
+  box-shadow: 0px 0px 10px -1px #111;
   color: #F5F5F5;
   padding: 0 20px;
   font-size: 20px;
@@ -374,7 +404,7 @@ export default {
   background-color: rgba(78, 78, 78, 0.404);
   margin:0px auto 0;
   border-radius: 5px;
-  box-shadow: 2px 2px 10px -1px #111;
+  box-shadow: 0px 0px 10px -1px #111;
   color: #F5F5F5;
   padding: 0 20px;
   font-size: 20px;
@@ -385,7 +415,7 @@ export default {
   transition: all .6s;
 }
 .search:hover{
-  box-shadow: 0px 0px 2px 0px rgb(88, 211, 233);
+  box-shadow: 0px 0px 10px 0px rgb(108, 255, 255);
 }
 
 
@@ -416,7 +446,7 @@ export default {
   min-width: 50px;
 
   /* background-color: cornflowerblue; */
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 14px;
   float: left;
 }
@@ -429,15 +459,15 @@ export default {
   box-shadow: 0px 0px 14px -3px #0bf7ff;
 }
 .s_square{
-  max-width: 80px;
+  max-width: 60px;
   width: 10vw;
   min-width: 50px;
 
-  max-height: 80px;
+  max-height: 60px;
   height: 10vw;
   min-height: 50px;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 10px;
   /* background-color: cornflowerblue; */
   /* border: 1px solid #000000; */
 }
@@ -657,13 +687,13 @@ export default {
     height: 50px;
   }
   .s_item{
-    width: 80px;
-    border-radius: 16px;
+    width: 60px;
+    border-radius: 10px;
   }
   .s_square{
     width: 80px;
     height: 80px;
-    border-radius: 16px;
+    border-radius: 10px;
   }
   .set{
     width: 50px;

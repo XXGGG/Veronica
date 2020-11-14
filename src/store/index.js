@@ -19,6 +19,8 @@ const store = new Vuex.Store({
 
         shortcut_target:xxg('user-defined') ? xxg('user-defined').shortcut_target : '_blank' ,
         // shortcut_target:JSON.parse(localStorage.getItem('user-defined')) ? JSON.parse(localStorage.getItem('user-defined')).shortcut_target : '_blank' ,
+
+        bg_picture:xxg('user-defined') ? xxg('user-defined').bg_picture : 'open',
         
     },
     mutations:{
@@ -36,6 +38,9 @@ const store = new Vuex.Store({
         },
         C_shortcut_target(state,boole){
             state.shortcut_target = boole
+        },
+        C_bg_picture(state,boole){
+            state.bg_picture = boole
         },
     }
 })
