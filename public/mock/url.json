@@ -1,0 +1,15 @@
+{
+    "data":{
+        "shortcut_all_list":[
+            { "id":"1", "img":"img/shortcut_img/bilibili.jpg","link":"https://www.bilibili.com/","name":"哔哩哔哩"},
+            { "id":"2", "img":"img/shortcut_img/zhihu.jpg","link":"https://www.zhihu.com/","name":"知乎"},
+            { "id":"3", "img":"img/shortcut_img/itzj.jpg","link":"https://www.ithome.com/","name":"IT之家"},
+            { "id":"4", "img":"img/shortcut_img/weibo.jpg","link":"https://weibo.com/","name":"微博"},
+            { "id":"5", "img":"img/shortcut_img/youku.jpg","link":"https://www.youku.com/","name":"优酷"},
+            { "id":"6", "img":"img/shortcut_img/taobao.jpg","link":"https://www.taobao.com/","name":"淘宝"},
+            { "id":"7", "img":"img/shortcut_img/github.jpg","link":"https://github.com/","name":"GitHub"},
+            { "id":"8", "img":"img/shortcut_img/mayun.jpg","link":"https://gitee.com/","name":"码云"},
+            { "id":"9", "img":"img/shortcut_img/mgtv.jpg","link":"https://www.mgtv.com/","name":"芒果TV"}
+        ]
+    }
+}

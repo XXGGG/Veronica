@@ -3,25 +3,28 @@
     <router-view/>
   </div>
 </template>
-
 <script>
 export default {
-  name: 'App',
-  created(){
-   
+  name:'App',
+  data(){
+    return {
+      
+    }
   },
-   methods:{
-    
-   }
+  created(){
+    this.detectionUserData() //检测有没有默认用户数据
+  },
+  methods:{
+    detectionUserData(){
+      if(!localStorage.getItem('user-defined')){
+        let data = {}
+        localStorage.setItem('user-defined',JSON.stringify(data))
+      }
+    }
+  }
 }
 </script>
-
-<style>
-#app{
-  background-color: #222;
-  overflow:none;
-  color: #f5f5f5;
-}
+<style lang="scss">
 a{
   text-decoration: none;
   color:#f5f5f5;
