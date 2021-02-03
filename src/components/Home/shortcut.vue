@@ -49,9 +49,10 @@ export default {
 .shortcut{
     min-width: 80px;
     max-width: 90vw;
-    height: 80px;
+    height: 70px;
     border-radius: 30px;
-    background-color: #34343490;
+    background-color: rgba(51, 51, 51, 0.8);
+    box-shadow: 2px 2px 16px -6px rgb(0, 0, 0);
     padding: 10px 10px;
     transition: all .2s;
     overflow: hidden;
@@ -64,7 +65,7 @@ export default {
         /* background-color: cornflowerblue; */
         border-radius: 10px;
         float: left;
-        margin: 10px 16px;
+        margin: 10px 10px;
         transition: all .2s ease-in-out;
         &:hover{
             transform: scale(1.2);
@@ -73,8 +74,8 @@ export default {
             box-shadow: 0px 0px 14px -3px #0bf7ff;
         }
         .shortcut_square{
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             overflow: hidden;
             border-radius: 10px;
             margin: auto;

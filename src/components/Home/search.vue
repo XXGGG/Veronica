@@ -72,12 +72,13 @@ export default {
 <style lang="scss" scoped>
 .search{
     display: block;
-    width: 800px;
+    max-width: 600px;
+    width: 76vw;
     height: 50px;
-    background-color: rgba(78, 78, 78, 0.9);
-    margin:20px auto 0;
-    border-radius: 10px;
-    box-shadow: 1px 1px 10px -6px #111;
+    background-color: rgba(19, 19, 19, 0.9);
+    margin:20px auto 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 16px -6px #000;
     color: #F5F5F5;
     padding: 0 20px;
     font-size: 20px;

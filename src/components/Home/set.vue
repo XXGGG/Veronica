@@ -1,5 +1,5 @@
 <template>
-<div>
+<div @click.self="close()">
     <!-- 设置面板 -->
     <div class="set_box" >
         <div class="set_area">
@@ -158,6 +158,9 @@ export default {
         this.get_shortcut_all_list();//得到列表
     },
     methods:{
+        close(){
+            this.$emit('close_set');
+        },
         ...mapMutations([
             'Change_search_engine',
             'Change_shortcut_area',
@@ -192,7 +195,7 @@ export default {
         },
         
         get_shortcut_all_list(){
-           this.axios.get('mock/url.json').then(res=>{
+           this.axios.get('../mock/url.json').then(res=>{
                if(res.status == 200){
                    this.shortcut_all_list = res.data.data.shortcut_all_list
                    this.get_url_id();
@@ -200,6 +203,11 @@ export default {
            }).catch(err=>{
                console.log(err)
            })
+        //    this.axios.get('/weibo/').then(res=>{
+        //        console.log(res)
+        //    }).catch(err=>{
+        //        console.log(err)
+        //    })
        },
        get_url_id(){
             this.shortcut_id = []
@@ -253,13 +261,15 @@ export default {
     justify-content: center;
     align-items: center; */
     z-index: 100;
+    box-shadow: 6px 6px 10px -6px rgb(0, 0, 0);
     .set_area{
         width: 1200px;
         height: 700px;
-        background-color: #222;
+        background-color: rgba(34, 34, 34, 0.96);
         border-radius: 16px;
         margin: auto;
         display: flex;
+        box-shadow: 6px 6px 10px -6px rgb(0, 0, 0);
         .set_left{
             width: 40%;
             height: 100%;
@@ -350,6 +360,7 @@ export default {
                     cursor: pointer;
                     position: relative;
                     /* background-color: chartreuse; */
+                    transition: all 1s;
                     img{
                         width: 60px;
                         height: 60px;
@@ -375,45 +386,41 @@ export default {
                     /* background-color: aqua; */
                     top: 10px;
                     left:10px;
-                    font-size: 30px;
+                    font-size: 20px;
                     text-align: center;
                     display: none;
                 }
                 .select_item_remove_fear:hover .remove_fear{
-                    animation: fear .6s infinite;
+                    animation: fear 1.4s infinite;
                 }
                 .select_item_add_happy:hover .add_happy{
-                    animation: happy .6s infinite;
+                    animation: happy 1.4s infinite;
                 }
                 .select_item:hover .i_icon{
                     display: block;
                 }
                 @keyframes fear {
-                    0%{
-                        transform: rotate(15deg) translateX(1px) translateY(-1px);
-                    }
-                    25%{
-                        transform: rotate(-15deg) translateX(1px) translateY(-1px);
-                    }
-                    50%{
-                        transform: rotate(15deg) translateX(1px) translateY(-1px);
-                    }
-                    75%{
-                        transform: rotate(-15deg) translateX(-1px) translateY(1px);
-                    }
-                    100%{
-                        transform: rotate(15deg) translateX(1px) translateY(-1px);
-                    }
+                    0%{transform: rotate(4deg) translateX(0px) translateY(-2px);}
+                    10%{transform: rotate(-4deg) translateX(0px) translateY(0px);}
+                    20%{transform: rotate(4deg) translateX(0px) translateY(-2px);}
+                    30%{transform: rotate(-4deg) translateX(0px) translateY(0px);}
+                    40%{transform: rotate(4deg) translateX(0px) translateY(-2px);}
+                    50%{transform: rotate(-4deg) translateX(0px) translateY(0px);}
+                    60%{transform: rotate(4deg) translateX(0px) translateY(-2px);}
+                    70%{transform: rotate(-4deg) translateX(0px) translateY(0px);}
+                    80%{transform: rotate(4deg) translateX(0px) translateY(-2px);}
+                    90%{transform: rotate(-4deg) translateX(0px) translateY(0px);}
+                    100%{transform: rotate(4deg) translateX(0px) translateY(-2px);}
                 }
                 @keyframes happy {
                     0%{
-                        transform: scale(0.8);
+                        transform: scale(1);
                     }
                     50%{
                         transform: scale(1.1);
                     }
                     100%{
-                        transform: scale(0.8);
+                        transform: scale(1);
                     }
                 }
             }

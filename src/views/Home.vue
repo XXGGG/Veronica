@@ -13,12 +13,15 @@
         <img src="img/avatar.jpg" alt="">
       </div>
       <transition name="fade">
-        <div class="mask" v-if="set_show"></div>
+        <div class="mask" v-if="set_show" ></div>
       </transition>
-      <transition name="emerge">
-        <set class="set_fixed" :bgImg="BgPicture" v-if="set_show"/>
+      <transition name="emerge" >
+          <set class="set_fixed" :bgImg="BgPicture" v-if="set_show" @close_set="close_set_btn()"/>
       </transition>
-      
+
+      <!-- 微博热搜 -->
+      <weibo :TopSearch="topSearch_list"/>
+
   </div>
 </template>
 
@@ -26,19 +29,22 @@
 import search from '@/components/Home/search'
 import shortcut from '@/components/Home/shortcut'
 import set from '@/components/Home/set'
+import weibo from '@/components/Home/weibo'
 import {mapState,mapMutations} from 'vuex'
 export default {
   name: 'Home',
   components:{
     search,
     shortcut,
-    set
+    set,
+    weibo
   },
   data () {
     return {
       set_show:false,
       userData:{},//用户自定义数据
-      BgPicture:'' //背景图片
+      BgPicture:'', //背景图片
+      topSearch_list:''
     }
   },
   computed:{
@@ -54,6 +60,7 @@ export default {
   },
   mounted(){
     this.load_bg(); //加载背景图片
+    this.getTopSearch(); //加载微博热搜
   },
   methods:{
     // 加载背景
@@ -67,6 +74,14 @@ export default {
         this.BgPicture = ''
       }
     },
+    getTopSearch(){
+      this.axios.get('/weibo/').then(res=>{
+        this.topSearch_list = res.data.data
+      })
+    },
+    close_set_btn(){
+      this.set_show = false
+    }
   }
 }
 </script>
@@ -90,8 +105,8 @@ export default {
     border-radius: 50%;
     border: 2px solid rgb(52, 238, 238);
     position: fixed;
-    right: 20px;
-    top:20px;
+    right:16px;
+    top:16px;
     box-shadow: 2px 2px 10px -5px rgb(0, 0, 0);
     cursor: pointer;
     z-index: 10;
@@ -107,12 +122,12 @@ export default {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.4);
-    z-index: 3;
+    z-index: 2;
     background-size: cover;
     background-position:center;
 }
 .set_fixed{
-  position: fixed;
+    position: fixed;
     top:0;
     left: 0;
     right: 0;
