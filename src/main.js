@@ -11,9 +11,10 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
+import api from './api/api'
+axios.defaults.baseURL = api.baseUrl;// 配置接口地址
 
 Vue.prototype.axios = axios;
-axios.defaults.baseURL = '/api' 
 
 new Vue({
   router,
