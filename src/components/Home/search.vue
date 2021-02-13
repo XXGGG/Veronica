@@ -75,8 +75,8 @@ export default {
     max-width: 600px;
     width: 76vw;
     height: 50px;
-    background-color: rgba(19, 19, 19, 0.9);
-    margin:20px auto 10px;
+    background-color: rgba(19, 19, 19, 0.8);
+    margin:20px auto 20px;
     border-radius: 8px;
     box-shadow: 2px 2px 16px -6px #000;
     color: #F5F5F5;

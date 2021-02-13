@@ -38,12 +38,13 @@ export default {
     width: 100%;
     height: 120px;
     /* background-color: #333; */
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     display: flex;
     align-items: center;
     /* justify-content: center; */
     justify-content: center;
+    z-index: 3;
 }
 /* 快捷网址 */
 .shortcut{

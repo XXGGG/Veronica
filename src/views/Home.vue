@@ -20,7 +20,8 @@
       </transition>
 
       <!-- 微博热搜 -->
-      <weibo :TopSearch="topSearch_list"/>
+      <!-- <weibo :TopSearch="topSearch_list"/> -->
+      <box />
 
   </div>
 </template>
@@ -29,7 +30,8 @@
 import search from '@/components/Home/search'
 import shortcut from '@/components/Home/shortcut'
 import set from '@/components/Home/set'
-import weibo from '@/components/Home/weibo'
+// import weibo from '@/components/Home/weibo'
+import box from '@/components/box/box'
 import {mapState,mapMutations} from 'vuex'
 export default {
   name: 'Home',
@@ -37,7 +39,8 @@ export default {
     search,
     shortcut,
     set,
-    weibo
+    // weibo,
+    box
   },
   data () {
     return {
@@ -75,9 +78,10 @@ export default {
       }
     },
     getTopSearch(){
-      this.axios.get('/weibo/').then(res=>{
-        this.topSearch_list = res.data.data
-      })
+      // this.axios.get('/weibo/').then(res=>{
+      //   this.topSearch_list = res.data.data
+      // })
+      // 由于别人的接口不是开源的，没办法在线上调用~ gg
     },
     close_set_btn(){
       this.set_show = false

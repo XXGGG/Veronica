@@ -12,15 +12,16 @@ export default {
     }
   },
   created(){
-    this.detectionUserData() //检测有没有默认用户数据
+    // this.detectionUserData() //检测有没有默认用户数据
+    // 把这一把移到 store （也就是vuex里先去操作） 要不然第一次会报错
   },
   methods:{
-    detectionUserData(){
-      if(!localStorage.getItem('user-defined')){
-        let data = {}
-        localStorage.setItem('user-defined',JSON.stringify(data))
-      }
-    }
+    // detectionUserData(){
+    //   if(!localStorage.getItem('user-defined')){
+    //     let data = '{}'
+    //     localStorage.setItem('user-defined',JSON.stringify(data))
+    //   }
+    // }
   }
 }
 </script>

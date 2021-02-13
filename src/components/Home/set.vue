@@ -67,11 +67,21 @@
                                     @change="set_custom('bgPicture')">
                         </el-switch>
                     </div>
+                    <div class="set_item">
+                        <span>首页清新~</span>
+                        <el-switch  v-model="home_clean_value"      
+                                    active-color="#13ce66"
+                                    inactive-color="#ff4949"
+                                    active-value="true"
+                                    inactive-value="false"
+                                    @change="set_custom('homeClean')">
+                        </el-switch>
+                    </div>
                 </div>
 
                 <!-- 快捷 -->
                 <div v-if="set_select=='shortcut'">
-                    <div class="title">已选择的快捷网址：</div>
+                    <div class="title">已选择的快捷网址：（{{shortcut_list.length}}/20）</div>
                     <div class="shortcut_select">
                         <div class="select_item select_item_remove_fear" v-for="i in shortcut_list" :key="i.id">
                             <img class="remove_fear" :src="i.img" @click="remove_shortcut(i.id)"/>
@@ -125,6 +135,7 @@ export default {
             shortcut_area_value:'',
             shortcut_target_value:'',
             bg_picture_value:'',
+            home_clean_value:'',
             shortcut_all_list:[],
             shortcut_list:[],
             shortcut_id:[],
@@ -141,6 +152,7 @@ export default {
             'shortcut_area',
             'shortcut_target',
             'bg_picture',
+            'home_clean',
             'shortcutList'
         ]),
         
@@ -155,6 +167,7 @@ export default {
         this.shortcut_area_value = this.shortcut_area
         this.shortcut_target_value = this.shortcut_target
         this.bg_picture_value = this.bg_picture
+        this.home_clean_value = this.home_clean
         this.get_shortcut_all_list();//得到列表
     },
     methods:{
@@ -166,6 +179,7 @@ export default {
             'Change_shortcut_area',
             'Change_shortcut_target',
             'Change_bg_picture',
+            'Change_home_clean',
             'Change_url_list'
         ]),
         // 选择类目
@@ -191,11 +205,17 @@ export default {
                     this.Change_bg_picture(this.bg_picture_value);
                     break;
                 }
+                case "homeClean":{
+                    this.Change_home_clean(this.home_clean_value);
+                    // location.reload(); //刷新当前页面
+                    this.$forceUpdate()
+                    break;
+                }
             }
         },
         
         get_shortcut_all_list(){
-           this.axios.get('../mock/url.json').then(res=>{
+           this.axios.get('../../mock/url.json').then(res=>{
                if(res.status == 200){
                    this.shortcut_all_list = res.data.data.shortcut_all_list
                    this.get_url_id();
@@ -228,6 +248,9 @@ export default {
             this.Change_url_list(this.shortcut_list)
         },
         add_shortcut(id){
+            if(this.shortcut_list.length >= 20){
+                return
+            }
             if(JSON.stringify(this.shortcut_id).includes(id)){
                 return
             }else{
@@ -325,6 +348,7 @@ export default {
         .set_right{
             width: 60%;
             height: 100%;
+            box-sizing: border-box;
             padding: 10px 0;
             /* background-color: rgb(214, 223, 86); */
             .set_item{
@@ -352,6 +376,7 @@ export default {
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
+                user-select: none;
                 .select_item{
                     width: 60px;
                     height: 90px;
@@ -361,6 +386,7 @@ export default {
                     position: relative;
                     /* background-color: chartreuse; */
                     transition: all 1s;
+                    overflow: hidden;
                     img{
                         width: 60px;
                         height: 60px;
