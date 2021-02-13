@@ -1,15 +1,41 @@
 {
     "data":{
         "shortcut_all_list":[
-            { "id":"1", "img":"img/shortcut_img/bilibili.jpg","link":"https://www.bilibili.com/","name":"哔哩哔哩"},
-            { "id":"2", "img":"img/shortcut_img/zhihu.jpg","link":"https://www.zhihu.com/","name":"知乎"},
-            { "id":"3", "img":"img/shortcut_img/itzj.jpg","link":"https://www.ithome.com/","name":"IT之家"},
-            { "id":"4", "img":"img/shortcut_img/weibo.jpg","link":"https://weibo.com/","name":"微博"},
-            { "id":"5", "img":"img/shortcut_img/youku.jpg","link":"https://www.youku.com/","name":"优酷"},
-            { "id":"6", "img":"img/shortcut_img/taobao.jpg","link":"https://www.taobao.com/","name":"淘宝"},
-            { "id":"7", "img":"img/shortcut_img/github.jpg","link":"https://github.com/","name":"GitHub"},
-            { "id":"8", "img":"img/shortcut_img/mayun.jpg","link":"https://gitee.com/","name":"码云"},
-            { "id":"9", "img":"img/shortcut_img/mgtv.jpg","link":"https://www.mgtv.com/","name":"芒果TV"}
+            { "id":"1", "img":"img/shortcut_img/bilibili.png","link":"https://www.bilibili.com/","name":"哔哩哔哩"},
+            { "id":"2", "img":"img/shortcut_img/acfun.png","link":"https://www.acfun.cn/","name":"AcFun"},
+            { "id":"3", "img":"img/shortcut_img/zhihu.png","link":"https://www.zhihu.com/","name":"知乎"},
+            { "id":"4", "img":"img/shortcut_img/douban.png","link":"https://www.douban.com/","name":"豆瓣"},
+            { "id":"5", "img":"img/shortcut_img/ithome.png","link":"https://www.ithome.com/","name":"IT之家"},
+            { "id":"6", "img":"img/shortcut_img/zealer.png","link":"https://www.zealer.com/","name":"ZEALER"},
+            { "id":"7", "img":"img/shortcut_img/weibo.png","link":"https://weibo.com/","name":"微博"},
+            { "id":"8", "img":"img/shortcut_img/toutiao.png","link":"https://www.toutiao.com/","name":"今日头条"},
+            { "id":"9", "img":"img/shortcut_img/youku.png","link":"https://www.youku.com/","name":"优酷"},
+            { "id":"10", "img":"img/shortcut_img/v.qq.png","link":"https://v.qq.com/","name":"腾讯视频"},
+            { "id":"11", "img":"img/shortcut_img/ixigua.png","link":"https://www.ixigua.com/","name":"西瓜视频"},
+            { "id":"12", "img":"img/shortcut_img/iqiyi.png","link":"https://www.iqiyi.com//","name":"爱奇艺"},
+            { "id":"13", "img":"img/shortcut_img/mgtv.png","link":"https://www.mgtv.com/","name":"芒果TV"},
+            { "id":"14", "img":"img/shortcut_img/douyu.png","link":"https://www.douyu.com/","name":"斗鱼"},
+            { "id":"15", "img":"img/shortcut_img/huya.png","link":"https://www.huya.com//","name":"虎牙"},
+            { "id":"16", "img":"img/shortcut_img/taobao.png","link":"https://www.taobao.com/","name":"淘宝"},
+            { "id":"17", "img":"img/shortcut_img/jd.png","link":"https://www.jd.com/","name":"京东"},
+            { "id":"18", "img":"img/shortcut_img/tmall.png","link":"https://www.tmall.com/","name":"天猫"},
+            { "id":"19", "img":"img/shortcut_img/suning.png","link":"https://www.suning.com/","name":"苏宁易购"},
+            { "id":"20", "img":"img/shortcut_img/youtube.png","link":"https://www.youtube.com/","name":"Youtube"},
+            { "id":"21", "img":"img/shortcut_img/instagram.png","link":"https://www.instagram.com/","name":"Instagram"},
+            { "id":"22", "img":"img/shortcut_img/twitter.png","link":"https://twitter.com/","name":"Twitter"},
+            { "id":"23", "img":"img/shortcut_img/google.png","link":"https://www.google.com/","name":"Google"},
+            { "id":"24", "img":"img/shortcut_img/csdn.png","link":"https://www.csdn.net/","name":"CSDN"},
+            { "id":"25", "img":"img/shortcut_img/github.png","link":"https://github.com/","name":"GitHub"},
+            { "id":"26", "img":"img/shortcut_img/gitee.png","link":"https://gitee.com/","name":"码云"},
+            { "id":"27", "img":"img/shortcut_img/aliyun.png","link":"https://www.aliyun.com/","name":"阿里云"},
+            { "id":"28", "img":"img/shortcut_img/juejin.png","link":"https://juejin.cn/","name":"掘金"},
+            { "id":"29", "img":"img/shortcut_img/jianshu.png","link":"https://www.jianshu.com/","name":"简书"},
+            { "id":"30", "img":"img/shortcut_img/tieba.png","link":"https://tieba.baidu.com/","name":"贴吧"},
+            { "id":"31", "img":"img/shortcut_img/imooc.png","link":"https://www.imooc.com/","name":"慕课"},
+            { "id":"32", "img":"img/shortcut_img/huaban.png","link":"https://huaban.com/","name":"花瓣网"},
+            { "id":"33", "img":"img/shortcut_img/zcool.png","link":"https://www.zcool.com.cn/","name":"站酷"},
+            { "id":"34", "img":"img/shortcut_img/3dmgame.png","link":"https://www.3dmgame.com/","name":"3DMGAME"}
+
         ]
     }
 }
