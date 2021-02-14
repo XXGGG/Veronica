@@ -11,6 +11,7 @@
                 <div class="options">
                     <div class="item" @click="set_selects('set')">设置</div>
                     <div class="item" @click="set_selects('shortcut')">快捷网址</div>
+                    <div class="item" @click="set_to_home_page()">设为首页</div>
                     <div class="item" @click="set_selects('about')">关于</div>
                 </div>
             </div>
@@ -18,7 +19,13 @@
             <div class="set_right">
                 <!-- 默认 -->
                 <div v-if="set_select=='default'">
-                    
+                    <div class='readme'>
+                        <h1>本网页仅作为学习使用</h1>
+                        <p>由于手机端上首页作用太小且没必要,所以暂无适配。</p>
+                        <p>“Veronica”名词来源《钢铁侠》中的马克44号。</p>
+                        <p>更多功能未来会持续更新~ 敬请期待！</p>
+                        <p>Github项目地址：<a href="https://github.com/XXGGG/Veronica">[Mark-Veronica]</a> </p>
+                    </div>
                 </div>
                 <!-- 设置 -->
                 <div v-if="set_select=='set'">
@@ -120,7 +127,7 @@ export default {
     data(){
         return {
             set_show:true,//打开设置
-            set_select:'default',
+            set_select:'set',
             options:[{
                         value: 'baidu',
                         label: '百度'
@@ -215,7 +222,7 @@ export default {
         },
         
         get_shortcut_all_list(){
-           this.axios.get('../../mock/url.json').then(res=>{
+           this.axios.get('mock/url.json').then(res=>{
                if(res.status == 200){
                    this.shortcut_all_list = res.data.data.shortcut_all_list
                    this.get_url_id();
@@ -223,11 +230,6 @@ export default {
            }).catch(err=>{
                console.log(err)
            })
-        //    this.axios.get('/weibo/').then(res=>{
-        //        console.log(res)
-        //    }).catch(err=>{
-        //        console.log(err)
-        //    })
        },
        get_url_id(){
             this.shortcut_id = []
@@ -266,6 +268,9 @@ export default {
         },
         filter_shortcut(id){
             return JSON.stringify(this.shortcut_id).includes(id)
+        },
+        set_to_home_page(){
+            alert('无法设置为首页，请在浏览器设置中设置！')
         }
     }
 }
@@ -351,6 +356,18 @@ export default {
             box-sizing: border-box;
             padding: 10px 0;
             /* background-color: rgb(214, 223, 86); */
+            .readme{
+                width: 90%;
+                margin: 40px auto;
+                height: 100%;
+                padding: 20px;
+                box-sizing: border-box;
+                font-size: 24px;
+                color:rgb(236, 236, 236);
+                line-height: 50px;
+                border-radius: 10px;
+                background-color: #333;
+            }
             .set_item{
                 color: azure;
                 user-select: none;
@@ -378,7 +395,7 @@ export default {
                 align-items: center;
                 user-select: none;
                 .select_item{
-                    width: 60px;
+                    width: 80px;
                     height: 90px;
                     margin: 10px;
                     padding: 10px;
@@ -391,6 +408,8 @@ export default {
                         width: 60px;
                         height: 60px;
                         border-radius: 10px;
+                        margin: auto;
+                        display: block;
                     }
                     .i_name{
                         height: 30px;
@@ -405,7 +424,7 @@ export default {
                     }
                 }
                 .i_icon{
-                    width: 60px;
+                    width: 80px;
                     height: 60px;
                     line-height: 60px;
                     position: absolute;

@@ -36,7 +36,7 @@
                     <div class="tool_box">
                         <span   v-for="(i,index) in urlList.all" :key=index>
                             <a class="tool_item" :href="i.url" target="_blank" v-if="urlType == i.type || urlType == 'all'" >
-                                <img :src="i.img">
+                                <img :src="i.img" @error="defImg()">
                                 <div class="tool_name">{{i.name}}</div>
                                 <div class="tool_details">{{i.details}}</div>
                             </a>
@@ -58,7 +58,7 @@ export default {
         return {
             urlList:url.urlList,
             urlType:'all',
-            update:'true'
+            update:'true',
         }
     },
     computed:{
@@ -80,6 +80,11 @@ export default {
     created(){
     },
     methods:{
+       defImg(){
+            let img = event.srcElement;   //当前元素
+            img.src = require("../../../public/img/defPic.png")
+            img.onerror = null; //防止闪图
+        }
     }
 }
 </script>
